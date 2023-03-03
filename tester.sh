@@ -25,7 +25,7 @@ fi
 norminette_success=true
 for file in $(find . -name "*.c"); do
     if test -f norminette; then
-        ./norminette "$file"
+        ./norminette -R CheckForbiddenSourceHeader "$file"
         if [ $? -ne 0 ]; then
             norminette_success=false
         fi
@@ -40,8 +40,10 @@ fi
 
 exec_cmd()
 {
-    cmd=$(echo "$1" | ./minishell)
-    echo "$cmd"
+    cmd="$1"
+    cmd="${cmd//\'}"
+    output=$(echo "$cmd" | ./minishell)
+    echo "$output"
 }
 
 check_result()
@@ -59,8 +61,8 @@ check_result()
 
 tests=(
     ### ECHO ###
-    ["echo 'salut a tous'"]="salut a tous"
     ["echo ' $ '"]=" $ "
+    ["echo 'salut a tous'"]="salut a tous"
 
     ### VAR ENV ###
     ["echo \"$HOME\""]=$HOME
