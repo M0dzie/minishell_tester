@@ -18,6 +18,26 @@ echo
 
 EXEC="minishell $>"
 
+if test -f Makefile; then
+    make
+fi
+
+norminette_success=true
+for file in $(find . -name "*.c"); do
+    if test -f norminette; then
+        ./norminette "$file"
+        if [ $? -ne 0 ]; then
+            norminette_success=false
+        fi
+    fi
+done
+
+if [ $norminette_success = true ]; then
+    echo -e "${GREEN}Norm OK${NC}"
+else
+    echo -e "${RED}Norm KO${NC}"
+fi
+
 exec_cmd()
 {
     cmd=$(echo "$1" | ./minishell)
