@@ -23,14 +23,14 @@ if test -f Makefile; then
 fi
 
 norminette_success=true
-for file in $(find . -name "*.c"); do
+find . -name "*.c" -exec sh -c '
     if test -f norminette; then
-        ./norminette -R CheckForbiddenSourceHeader "$file"
+        ./norminette -R CheckForbiddenSourceHeader "$1"
         if [ $? -ne 0 ]; then
-            norminette_success=false
-        fi
+            exit 1
+        fi  
     fi
-done
+' sh {} \; || norminette_success=false
 
 if [ $norminette_success = true ]; then
     echo -e "${GREEN}Norm OK${NC}"
