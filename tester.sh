@@ -1,11 +1,13 @@
 #!/bin/bash
 
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-YELLOW='\033[0;33m'
-NC='\033[0m'
+green='\033[0;32m'
+red='\033[0;31m'
+yellow='\033[0;33m'
 
-echo -e "${YELLOW}
+bold="\033[1m"
+nc='\033[0m'
+
+echo -e "${yellow}${bold}
 .##.....##.####.##....##.####..######..##.....##.########.##.......##......
 .###...###..##..###...##..##..##....##.##.....##.##.......##.......##......
 .####.####..##..####..##..##..##.......##.....##.##.......##.......##......
@@ -13,10 +15,10 @@ echo -e "${YELLOW}
 .##.....##..##..##..####..##........##.##.....##.##.......##.......##......
 .##.....##..##..##...###..##..##....##.##.....##.##.......##.......##......
 .##.....##.####.##....##.####..######..##.....##.########.########.########
-by Modzie${NC}"
+by Modzie${nc}"
 echo
 
-EXEC="minishell $>"
+exec="minishell $>"
 
 if test -f Makefile; then
     make
@@ -33,15 +35,14 @@ find . -name "*.c" -exec sh -c '
 ' sh {} \; || norminette_success=false
 
 if [ $norminette_success = true ]; then
-    echo -e "${GREEN}Norm OK${NC}"
+    echo -e "${green}${bold}Norm OK${nc}"
 else
-    echo -e "${RED}Norm KO${NC}"
+    echo -e "${red}${bold}Norm KO${nc}"
 fi
 
 exec_cmd()
 {
     cmd="$1"
-    cmd="${cmd//\'}"
     output=$(echo "$cmd" | ./minishell)
     echo "$output"
 }
@@ -51,11 +52,11 @@ check_result()
     expected_output="$1"
     your_output="$2"
     if [ "$expected_output" = "$your_output" ]; then
-        echo -e "${GREEN}Success${NC}"
+        echo -e "${green}${bold}Success${nc}"
     else
-        echo -e "${RED}Fail${NC}"
-        echo -e "Expected output : $expected_output"
-        echo -e "Your ouput : $your_output"
+        echo -e "${red}${bold}Fail${nc}"
+        echo "Expected output : $expected_output"
+        echo  "Your ouput : $your_output"
     fi
 }
 
