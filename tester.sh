@@ -3,7 +3,6 @@
 green='\033[0;32m'
 red='\033[0;31m'
 yellow='\033[0;33m'
-
 bold="\033[1m"
 nc='\033[0m'
 
@@ -62,8 +61,8 @@ check_result()
 
 tests=(
     ### ECHO ###
-    ["echo ' $ '"]=" $ "
-    ["echo 'salut a tous'"]="salut a tous"
+    ["echo "echo " $ """]=" $ "
+    ["echo "echo "salut a tous"""]="salut a tous"
 
     ### VAR ENV ###
     ["echo \"$HOME\""]=$HOME
