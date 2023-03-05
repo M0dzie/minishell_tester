@@ -1,7 +1,9 @@
 # minishell_tester
 
 ## Launch
-`bash tester.sh`
+```bash
+bash tester.sh
+```
 
 ## Test
 First of all, the tester check the `norm`  
