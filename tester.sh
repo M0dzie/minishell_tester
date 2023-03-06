@@ -4,25 +4,22 @@ green='\033[0;32m'
 blue='\033[1;34m'
 red='\033[0;31m'
 yellow='\033[0;33m'
-bold="\033[1m"
+bold='\033[1m'
 nc='\033[0m'
 
 echo -e "${yellow}${bold}
-.##.....##.####.##....##.####..######..##.....##.########.##.......##......
-.###...###..##..###...##..##..##....##.##.....##.##.......##.......##......
-.####.####..##..####..##..##..##.......##.....##.##.......##.......##......
-.##.###.##..##..##.##.##..##...######..#########.######...##.......##......
-.##.....##..##..##..####..##........##.##.....##.##.......##.......##......
-.##.....##..##..##...###..##..##....##.##.....##.##.......##.......##......
-.##.....##.####.##....##.####..######..##.....##.########.########.########
+##     ## #### ##    ## ####  ######  ##     ## ######## ##       ##      
+###   ###  ##  ###   ##  ##  ##    ## ##     ## ##       ##       ##      
+#### ####  ##  ####  ##  ##  ##       ##     ## ##       ##       ##      
+## ### ##  ##  ## ## ##  ##   ######  ######### ######   ##       ##      
+##     ##  ##  ##  ####  ##        ## ##     ## ##       ##       ##      
+##     ##  ##  ##   ###  ##  ##    ## ##     ## ##       ##       ##      
+##     ## #### ##    ## ####  ######  ##     ## ######## ######## ########
 by Modzie${nc}"
-echo
-
-exec="minishell $>"
 
 ## Make project ##
 if test -f Makefile; then
-    make
+    make 1>/dev/null
 	echo 
 	if [[ $? -eq 0 ]]; then
 		echo -e "${green}${bold}Compilation succeeded ✓${nc}"
@@ -42,19 +39,20 @@ else
     echo -e "${red}${bold}⚠️ Norm KO ⚠️${nc}"
 fi
 
-## Test functions ##
+## Exec command in minishell ##
 exec_cmd()
 {
     cmd="$1"
-    output=$(echo "$cmd" | ./minishell)
+    output="$(echo "$cmd" | ./minishell | sed -n 2p)"
     echo "$output"
 }
 
+## Check if the output is good ##
 check_result()
 {
     expected_output="$1"
     your_output="$2"
-    if [ "$expected_output" = "$your_output" ]; then
+    if [[ "$expected_output" = "$your_output" ]]; then
         echo -e "${green}${bold}Success ✓${nc}"
     else
         echo -e "${red}${bold}⚠️ Fail ⚠️${nc}"
@@ -63,18 +61,24 @@ check_result()
     fi
 }
 
-tests=(
-    ### ECHO ###
-    ["echo "echo " $ """]=" $ "
-    ["echo "echo "salut a tous"""]="salut a tous"
+## Test ##
+printf "${blue}${bold}\n\n#####		TEST		#####\n\n${nc}"
 
-    ### VAR ENV ###
-    ["echo \"$HOME\""]=$HOME
-)
+check_result "$(echo "echo salut" | bash)" "$(exec_cmd "echo salut")"
+check_result "$(echo "echo " $ "" | bash)" "$(exec_cmd "echo " $ "")"
 
-for cmd in "${!tests[@]}"
-do
-    expected_output="${tests[$cmd]}"
-    your_output="$(exec_cmd "$cmd")"
-    check_result "$expected_output" "$your_output"
-done
+# tests=(
+#     ### ECHO ###
+#     [ "echo "echo " $ """ ]=" $ "
+#     [ "echo "echo "salut a tous""" ]="salut a tous"
+
+#     ### VAR ENV ###
+#     [ "echo \"$HOME\"" ]=$HOME
+# )
+
+# for cmd in "${!tests[@]}"
+# do
+#     expected_output="${tests[$cmd]}"
+#     your_output="$(exec_cmd "$cmd")"
+#     check_result "$expected_output" "$your_output"
+# done
