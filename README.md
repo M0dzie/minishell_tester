@@ -1,5 +1,11 @@
 # minishell_tester
 
+## Installation
+First things first, clone this in your repo project
+```bash
+git clone https://github.com/M0dzie/minishell_tester
+```
+
 ## Launch
 ```bash
 bash tester.sh
