@@ -43,7 +43,7 @@ fi
 exec_cmd()
 {
     cmd="$1"
-    output="$(echo "$cmd" | ./minishell | sed -n 2p)"
+    output=$(echo "$cmd" | ./minishell | sed '1d;$d')
     echo "$output"
 }
 
