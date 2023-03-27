@@ -29,6 +29,8 @@ echo -nnn ----------------nnnnn
 echo $
 echo $?
 echo $?$
+echo $?$??
+echo $??$
 echo $? | echo $? | echo $?
 echo $:$= | cat -e
 echo $=:= | cat -e

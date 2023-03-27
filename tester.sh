@@ -65,7 +65,7 @@ check_result()
 		((success++))
     else
         echo -e "${red}${bold}⚠️ Fail ⚠️${nc}"
-		echo "Test : $1"
+		echo -e "${yellow}Test : $test${nc}"
         echo "Expected output : $expected_output"
         echo  "Your ouput : $your_output"
 		((fail++))
