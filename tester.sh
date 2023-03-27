@@ -85,41 +85,103 @@ read_test_file()
 }
 
 ## Tests ##
-printf "${blue}${bold}\n\n#####		BASIC TESTS		#####\n${nc}"
-read_test_file "${dir_tests}basic_tests"
+if [[ $1 == "basic" ]]; then
+	printf "${blue}${bold}\n\n#####		BASIC TESTS		#####\n${nc}"
+	read_test_file "${dir_tests}basic_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS ECHO		#####\n${nc}"
-read_test_file "${dir_tests}echo_tests"
+if [[ $1 == "echo" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS ECHO		#####\n${nc}"
+	read_test_file "${dir_tests}echo_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS ENV		#####\n${nc}"
-read_test_file "${dir_tests}env_tests"
+if [[ $1 == "env" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS ENV		#####\n${nc}"
+	read_test_file "${dir_tests}env_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
-read_test_file "${dir_tests}export_tests"
+if [[ $1 == "export" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
+	read_test_file "${dir_tests}export_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
-read_test_file "${dir_tests}unset_tests"
+if [[ $1 == "unset" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
+	read_test_file "${dir_tests}unset_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS BINARY		#####\n${nc}"
-read_test_file "${dir_tests}binary_tests"
+if [[ $1 == "binary" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS BINARY		#####\n${nc}"
+	read_test_file "${dir_tests}binary_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS PWD		#####\n${nc}"
-read_test_file "${dir_tests}pwd_tests"
+if [[ $1 == "pwd" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS PWD		#####\n${nc}"
+	read_test_file "${dir_tests}pwd_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS CD		#####\n${nc}"
-read_test_file "${dir_tests}cd_tests"
+if [[ $1 == "cd" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS CD		#####\n${nc}"
+	read_test_file "${dir_tests}cd_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS EXIT		#####\n${nc}"
-read_test_file "${dir_tests}exit_tests"
+if [[ $1 == "exit" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS EXIT		#####\n${nc}"
+	read_test_file "${dir_tests}exit_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS PIPES		#####\n${nc}"
-read_test_file "${dir_tests}pipes_tests"
+if [[ $1 == "pipes" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS PIPES		#####\n${nc}"
+	read_test_file "${dir_tests}pipes_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
-read_test_file "${dir_tests}redirections_tests"
+if [[ $1 == "redirections" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
+	read_test_file "${dir_tests}pipes_tests"
+fi
 
-printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
-read_test_file "${dir_tests}heredoc_tests"
+if [[ $1 == "heredoc" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
+	read_test_file "${dir_tests}pipes_tests"
+fi
+
+if [[ !$1 ]]; then
+	printf "${blue}${bold}\n\n#####		BASIC TESTS		#####\n${nc}"
+	read_test_file "${dir_tests}basic_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS ECHO		#####\n${nc}"
+	read_test_file "${dir_tests}echo_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS ENV		#####\n${nc}"
+	read_test_file "${dir_tests}env_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
+	read_test_file "${dir_tests}export_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
+	read_test_file "${dir_tests}unset_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS BINARY		#####\n${nc}"
+	read_test_file "${dir_tests}binary_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS PWD		#####\n${nc}"
+	read_test_file "${dir_tests}pwd_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS CD		#####\n${nc}"
+	read_test_file "${dir_tests}cd_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS EXIT		#####\n${nc}"
+	read_test_file "${dir_tests}exit_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS PIPES		#####\n${nc}"
+	read_test_file "${dir_tests}pipes_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
+	read_test_file "${dir_tests}redirections_tests"
+
+	printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
+	read_test_file "${dir_tests}heredoc_tests"
+fi
 
 printf "${blue}${bold}\n\n#####		FINAL SCORE		#####\n\n${nc}"
 total=$((success + fail))
