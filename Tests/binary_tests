@@ -1,0 +1,5 @@
+/bin/echo
+/bin/echo Hola Que Tal
+/bin/env
+/bin/pwd
+/bin/cd Desktop

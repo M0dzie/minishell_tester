@@ -1,0 +1,12 @@
+pwd
+pwd hola
+pwd ./hola
+pwd hola que tal
+pwd -p
+pwd --
+pwd --p
+pwd ---p
+pwd -- p
+pwd pwd pwd
+pwd ls
+pwd ls env

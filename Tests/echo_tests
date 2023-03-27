@@ -57,6 +57,8 @@ EechoE
 >>echo>>
 |echo|
 |echo -n hola
+echo "Hello | ><"
+echo "Hello | ><" | ls
 echo $""
 echo "$"""
 echo '$'''

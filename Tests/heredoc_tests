@@ -1,0 +1,20 @@
+cat << hola
+cat << 'hola'
+cat << "hola"
+cat << ho"la"
+cat << $HOME
+cat << hola > bonjour
+cat bonjour
+cat << hola | rev
+<< hola
+<<hola
+cat <<
+cat << prout << lol << koala
+prout << lol << cat << koala
+<< $hola
+<< $"hola"$"b"
+<< $"$hola"$$"b"
+<< ho$la$"$a"$$"b"
+echo hola <<< bonjour
+echo hola <<<< bonjour
+echo hola <<<<< bonjour

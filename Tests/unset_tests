@@ -1,0 +1,41 @@
+unset ""
+unset INEXISTANT
+unset 9HOLA
+unset HOLA9
+unset HOL?A
+unset HOLA HOL?A
+unset HOL?A HOLA
+unset HOL?A HOL.A
+unset HOLA=
+unset HOL\\\\A
+unset HOL;A
+unset HOL.A
+unset HOL+A
+unset HOL=A
+unset HOL{A
+unset HOL}A
+unset HOL-A
+unset -HOLA
+unset _HOLA
+unset HOL_A
+unset HOLA_
+unset HOL*A
+unset HOL#A
+unset $HOLA
+unset $PWD
+unset HOL@
+unset HOL!A
+unset HOL^A
+unset HOL$?A
+unset HOL\~A
+unset =
+unset ======
+unset ++++++
+unset _______
+unset export
+unset echo
+unset pwd
+unset cd
+unset unset
+unset sudo
+export hola | unset hola | echo $?

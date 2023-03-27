@@ -91,12 +91,49 @@ read_test_file "${dir_tests}basic_tests"
 printf "${blue}${bold}\n\n#####		TESTS ECHO		#####\n${nc}"
 read_test_file "${dir_tests}echo_tests"
 
+printf "${blue}${bold}\n\n#####		TESTS ENV		#####\n${nc}"
+read_test_file "${dir_tests}env_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
+read_test_file "${dir_tests}export_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
+read_test_file "${dir_tests}unset_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS BINARY		#####\n${nc}"
+read_test_file "${dir_tests}binary_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS PWD		#####\n${nc}"
+read_test_file "${dir_tests}pwd_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS CD		#####\n${nc}"
+read_test_file "${dir_tests}cd_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS EXIT		#####\n${nc}"
+read_test_file "${dir_tests}exit_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS PIPES		#####\n${nc}"
+read_test_file "${dir_tests}pipes_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
+read_test_file "${dir_tests}redirections_tests"
+
+printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
+read_test_file "${dir_tests}heredoc_tests"
+
 printf "${blue}${bold}\n\n#####		FINAL SCORE		#####\n\n${nc}"
 total=$((success + fail))
 res=$(( 100 * success / total + (1000 * success / total % 10 >= 5 ? 1 : 0) ))
 echo -e "${pink}${bold}$res%${nc}"
 if [[ $res -gt 90 ]]; then
-	echo -e "${green}${bold}Congratulations ✓"
+	echo -e "${green}${bold}Congratulations ✓${nc}"
 else
-	echo -e "${red}${bold}⚠️ You failed ! ⚠️"
+	echo -e "${red}${bold}⚠️ You failed ! ⚠️${nc}"
 fi
+
+## Cleaning files ##
+rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 bonjour1 prout pwd whereis
+cd ~
+rm -rf bonjour hello bonjour
+cd -
+make fclean
