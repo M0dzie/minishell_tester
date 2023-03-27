@@ -4,8 +4,12 @@ green='\033[0;32m'
 blue='\033[1;34m'
 red='\033[0;31m'
 yellow='\033[0;33m'
+pink='\033[0;35m'
 bold='\033[1m'
 nc='\033[0m'
+
+dir='../'
+dir_tests='minishell_tester/Tests/'
 
 echo -e "${yellow}${bold}
 ##     ## #### ##    ## ####  ######  ##     ## ######## ##       ##      
@@ -18,6 +22,8 @@ echo -e "${yellow}${bold}
 by Modzie${nc}"
 
 ## Make project ##
+printf "\n\n${blue}${bold}#####		MAKE		#####\n${nc}"
+cd ${dir}
 if test -f Makefile; then
     make 1>/dev/null
 	echo 
@@ -31,7 +37,7 @@ if test -f Makefile; then
 fi
 
 ## Norm test ##
-printf "${blue}${bold}#####		TEST NORM		#####\n\n${nc}"
+printf "\n${blue}${bold}#####		TEST NORM		#####\n\n${nc}"
 norminette -R CheckForbiddenSourceHeader 1>/dev/null
 if [[ $? -eq 0 ]]; then
     echo -e "${green}${bold}Norm OK ✓${nc}"
@@ -47,6 +53,8 @@ exec_cmd()
     echo "$output"
 }
 
+success=0
+fail=0
 ## Check if the output is good ##
 check_result()
 {
@@ -54,31 +62,41 @@ check_result()
     your_output="$2"
     if [[ "$expected_output" = "$your_output" ]]; then
         echo -e "${green}${bold}Success ✓${nc}"
+		((success++))
     else
         echo -e "${red}${bold}⚠️ Fail ⚠️${nc}"
+		echo "Test : $1"
         echo "Expected output : $expected_output"
         echo  "Your ouput : $your_output"
+		((fail++))
     fi
 }
 
-## Test ##
-printf "${blue}${bold}\n\n#####		TEST		#####\n\n${nc}"
+## Read file ##
+read_test_file()
+{
+	i=1
+	while IFS= read -r test; do
+		echo 
+		echo -e "${pink}${bold}test $i:${nc}"; ((i++))
+		check_result "$(echo "$test" | bash)" "$(exec_cmd "$test")"
+		# check $?
+	done < "$1"
+}
 
-check_result "$(echo "echo salut" | bash)" "$(exec_cmd "echo salut")"
-check_result "$(echo "echo " $ "" | bash)" "$(exec_cmd "echo " $ "")"
+## Tests ##
+printf "${blue}${bold}\n\n#####		BASIC TESTS		#####\n${nc}"
+read_test_file "${dir_tests}basic_tests"
 
-# tests=(
-#     ### ECHO ###
-#     [ "echo "echo " $ """ ]=" $ "
-#     [ "echo "echo "salut a tous""" ]="salut a tous"
+printf "${blue}${bold}\n\n#####		TESTS ECHO		#####\n${nc}"
+read_test_file "${dir_tests}echo_tests"
 
-#     ### VAR ENV ###
-#     [ "echo \"$HOME\"" ]=$HOME
-# )
-
-# for cmd in "${!tests[@]}"
-# do
-#     expected_output="${tests[$cmd]}"
-#     your_output="$(exec_cmd "$cmd")"
-#     check_result "$expected_output" "$your_output"
-# done
+printf "${blue}${bold}\n\n#####		FINAL SCORE		#####\n\n${nc}"
+total=$((success + fail))
+res=$(( 100 * success / total + (1000 * success / total % 10 >= 5 ? 1 : 0) ))
+echo -e "${pink}${bold}$res%${nc}"
+if [[ $res -gt 90 ]]; then
+	echo -e "${green}${bold}Congratulations ✓"
+else
+	echo -e "${red}${bold}⚠️ You failed ! ⚠️"
+fi
