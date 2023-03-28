@@ -3,3 +3,10 @@
 /bin/env
 /bin/pwd
 /bin/cd Desktop
+pwd
+/usr/bin/echo
+/usr/bin/echo Hola Que Tal
+/usr/bin/env
+/usr/bin/pwd
+/usr/bin/cd Desktop
+pwd
