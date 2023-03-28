@@ -68,23 +68,23 @@ check_result()
 		echo -e "${bold}Test : $test${nc}$"
         echo -e "${green}Expected output : ${nc}$expected_output"
         echo -e "${red}Your ouput : ${nc}$your_output"
-		((fail++))
+		((fail++))	
     fi
 }
 
 ## Check the exit value with $? ##
 check_exit_value()
 {
-	bash_ret="$1"
-	your_ret="$2"
+	bash_exit="$1"
+	your_exit="$2"
 	echo "$1 et $2"
-	if [[ "$bsah_ret" -eq "$your_ret" ]]; then
+	if [[ "$bsah_exit" = "$your_exit" ]]; then
 		echo -e "${green}${bold}Exit value OK ✓${nc}"
 		((success++))
 	else
         echo -e "${red}${bold}⚠️ Wrong exit value ⚠️${nc}"
-        echo -e "${green}Expected value : ${nc}$bash_ret"
-        echo -e "${red}Your value : ${nc}$your_ret"
+        echo -e "${green}Expected value : ${nc}$bash_exit"
+        echo -e "${red}Your value : ${nc}$your_exot"
 		((fail++))
 	fi
 }
@@ -97,7 +97,6 @@ read_test_file()
 		echo 
 		echo -e "${pink}${bold}test $i:${nc}"; ((i++))
 		check_result "$(echo "$test" | bash)" "$(exec_cmd "$test")"
-		check_exit_value "$(echo "$?" | bash)" "$(exec_cmd "$?")"
 	done < "$1"
 }
 
@@ -177,7 +176,7 @@ else
 fi
 
 ## Cleaning files ##
-rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 bonjour 1 prout pwd whereis
+rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 bonjour_1 prout pwd whereis
 cd ~ > /dev/null
 rm -rf bonjour hello bonjour
 cd - > /dev/null
