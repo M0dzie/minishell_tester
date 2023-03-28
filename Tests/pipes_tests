@@ -37,6 +37,7 @@ ls -la | grep "."
 ls -la | grep "'.'"
 echo test.c | cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e|cat -e|cat -e|cat -e
 ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls
+ls|ls | ls | ls|ls|ls| Ls | ls | ls
 echo hola | cat | cat | cat | cat | cat | grep hola
 echo hola | cat
 echo hola| cat

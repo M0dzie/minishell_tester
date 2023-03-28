@@ -72,6 +72,23 @@ check_result()
     fi
 }
 
+## Check the exit value with $? ##
+check_exit_value()
+{
+	bash_ret="$1"
+	your_ret="$2"
+	echo "$1 et $2"
+	if [[ "$bsah_ret" -eq "$your_ret" ]]; then
+		echo -e "${green}${bold}Exit value OK ✓${nc}"
+		((success++))
+	else
+        echo -e "${red}${bold}⚠️ Wrong exit value ⚠️${nc}"
+        echo -e "${green}Expected value : ${nc}$bash_ret"
+        echo -e "${red}Your value : ${nc}$your_ret"
+		((fail++))
+	fi
+}
+
 ## Read file ##
 read_test_file()
 {
@@ -80,7 +97,7 @@ read_test_file()
 		echo 
 		echo -e "${pink}${bold}test $i:${nc}"; ((i++))
 		check_result "$(echo "$test" | bash)" "$(exec_cmd "$test")"
-		# check $?
+		check_exit_value "$(echo "$?" | bash)" "$(exec_cmd "$?")"
 	done < "$1"
 }
 
@@ -115,12 +132,12 @@ elif [[ $1 == "exit" ]]; then
 elif [[ $1 == "pipes" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS PIPES		#####\n${nc}"
 	read_test_file "${dir_tests}pipes_tests"
-elif [[ $1 == "redirections" ]]; then
+elif [[ $1 == "redir" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
-	read_test_file "${dir_tests}pipes_tests"
+	read_test_file "${dir_tests}redirections_tests"
 elif [[ $1 == "heredoc" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
-	read_test_file "${dir_tests}pipes_tests"
+	read_test_file "${dir_tests}heredoc_tests"
 else
 	printf "${blue}${bold}\n\n#####		BASIC TESTS		#####\n${nc}"
 	read_test_file "${dir_tests}basic_tests"
@@ -160,7 +177,7 @@ else
 fi
 
 ## Cleaning files ##
-rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 bonjour1 prout pwd whereis
-cd ~
+rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 bonjour 1 prout pwd whereis
+cd ~ > /dev/null
 rm -rf bonjour hello bonjour
-cd -
+cd - > /dev/null
