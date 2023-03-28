@@ -1,5 +1,4 @@
 # minishell_tester
-
 **minishell_tester** is a tool designed to automate the testing process of a `minishell` project. To use the tool, simply clone the repository into your project folder using the following command:
 
 ```bash
@@ -7,13 +6,32 @@ git clone https://github.com/M0dzie/minishell_tester
 ```
 
 ## Launching the Tester
-
 To launch the tester, navigate to the `minishell_tester` directory in your terminal and run the `tester.sh` script using the following command:
 
 ```bash
 bash tester.sh
 ```
 The tester.sh script will automatically compile your minishell project and run a series of tests to verify its functionality. The test results will be displayed in your terminal, indicating whether the project has passed or failed the tests.
+
+## Specific Tests
+To launch specific tests, you can add one of these following arguments : 
+- `basic`
+- `echo`
+- `env`
+- `export`
+- `unset`
+- `binary`
+- `pwd`
+- `cd`
+- `exit`
+- `pipes`
+- `redir`
+- `heredoc`
+
+For example :
+```bash
+bash tester.sh pwd
+```
 
 ## Testing Process
 The testing process involves two steps: 
