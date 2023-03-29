@@ -44,6 +44,7 @@ if [[ $? -eq 0 ]]; then
 else
     echo -e "${red}${bold}⚠️ Norm KO ⚠️${nc}"
 fi
+sleep 1
 
 ## Exec command in minishell ##
 exec_cmd()
@@ -176,7 +177,9 @@ else
 fi
 
 ## Cleaning files ##
-rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 bonjour_1 prout pwd whereis
+rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 prout pwd whereis bonjour1 bonjour 1
+cd .. > /dev/null
+rm -rf bonjour
 cd ~ > /dev/null
-rm -rf bonjour hello bonjour
+rm -rf bonjour hello
 cd - > /dev/null
