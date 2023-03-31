@@ -9,7 +9,9 @@ cd ../..
 cd ../.
 cd .././././.
 cd srcs
+pwd
 cd srcs objs
+pwd
 cd 'srcs'
 cd "srcs"
 cd '/etc'
