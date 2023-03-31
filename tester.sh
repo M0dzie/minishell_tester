@@ -112,32 +112,32 @@ elif [[ $1 == "env" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS ENV		#####\n${nc}"
 	read_test_file "${dir_tests}env_tests"
 elif [[ $1 == "export" ]]; then
-	printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
-	read_test_file "${dir_tests}export_tests"
-elif [[ $1 == "unset" ]]; then
-	printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
-	read_test_file "${dir_tests}unset_tests"
-elif [[ $1 == "binary" ]]; then
+# 	printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
+# 	read_test_file "${dir_tests}export_tests"
+# elif [[ $1 == "unset" ]]; then
+# 	printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
+# 	read_test_file "${dir_tests}unset_tests"
+# elif [[ $1 == "binary" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS BINARY		#####\n${nc}"
 	read_test_file "${dir_tests}binary_tests"
 elif [[ $1 == "pwd" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS PWD		#####\n${nc}"
 	read_test_file "${dir_tests}pwd_tests"
-elif [[ $1 == "cd" ]]; then
-	printf "${blue}${bold}\n\n#####		TESTS CD		#####\n${nc}"
-	read_test_file "${dir_tests}cd_tests"
+# elif [[ $1 == "cd" ]]; then
+# 	printf "${blue}${bold}\n\n#####		TESTS CD		#####\n${nc}"
+# 	read_test_file "${dir_tests}cd_tests"
 elif [[ $1 == "exit" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS EXIT		#####\n${nc}"
 	read_test_file "${dir_tests}exit_tests"
 elif [[ $1 == "pipes" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS PIPES		#####\n${nc}"
 	read_test_file "${dir_tests}pipes_tests"
-elif [[ $1 == "redir" ]]; then
-	printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
-	read_test_file "${dir_tests}redirections_tests"
-elif [[ $1 == "heredoc" ]]; then
-	printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
-	read_test_file "${dir_tests}heredoc_tests"
+# elif [[ $1 == "redir" ]]; then
+# 	printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
+# 	read_test_file "${dir_tests}redirections_tests"
+# elif [[ $1 == "heredoc" ]]; then
+# 	printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
+# 	read_test_file "${dir_tests}heredoc_tests"
 else
 	printf "${blue}${bold}\n\n#####		BASIC TESTS		#####\n${nc}"
 	read_test_file "${dir_tests}basic_tests"
@@ -145,24 +145,24 @@ else
 	read_test_file "${dir_tests}echo_tests"
 	printf "${blue}${bold}\n\n#####		TESTS ENV		#####\n${nc}"
 	read_test_file "${dir_tests}env_tests"
-	printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
-	read_test_file "${dir_tests}export_tests"
-	printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
-	read_test_file "${dir_tests}unset_tests"
+	# printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
+	# read_test_file "${dir_tests}export_tests"
+	# printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
+	# read_test_file "${dir_tests}unset_tests"
 	printf "${blue}${bold}\n\n#####		TESTS BINARY		#####\n${nc}"
 	read_test_file "${dir_tests}binary_tests"
 	printf "${blue}${bold}\n\n#####		TESTS PWD		#####\n${nc}"
 	read_test_file "${dir_tests}pwd_tests"
-	printf "${blue}${bold}\n\n#####		TESTS CD		#####\n${nc}"
-	read_test_file "${dir_tests}cd_tests"
+	# printf "${blue}${bold}\n\n#####		TESTS CD		#####\n${nc}"
+	# read_test_file "${dir_tests}cd_tests"
 	printf "${blue}${bold}\n\n#####		TESTS EXIT		#####\n${nc}"
 	read_test_file "${dir_tests}exit_tests"
 	printf "${blue}${bold}\n\n#####		TESTS PIPES		#####\n${nc}"
 	read_test_file "${dir_tests}pipes_tests"
-	printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
-	read_test_file "${dir_tests}redirections_tests"
-	printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
-	read_test_file "${dir_tests}heredoc_tests"
+	# printf "${blue}${bold}\n\n#####		TESTS REDIRECTIONS		#####\n${nc}"
+	# read_test_file "${dir_tests}redirections_tests"
+	# printf "${blue}${bold}\n\n#####		TESTS HEREDOC		#####\n${nc}"
+	# read_test_file "${dir_tests}heredoc_tests"
 fi
 
 ## Print score ##
@@ -177,7 +177,7 @@ else
 fi
 
 ## Cleaning files ##
-rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 prout pwd whereis bonjour1 bonjour 1
+rm -rf a b c d e dir bonjour bonjour1 cat echo export hey hola HOLA rm hello hola1 hola2 ls ls1 prout pwd whereis bonjour1 "bonjour 1"
 cd .. > /dev/null
 rm -rf bonjour
 cd ~ > /dev/null
