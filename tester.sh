@@ -86,7 +86,7 @@ check_exit_value()
 	else
         echo -e "${red}${bold}⚠️ Wrong exit value ⚠️${nc}"
         echo -e "${green}Expected value : ${nc}$bash_exit"
-        echo -e "${red}Your value : ${nc}$your_exot"
+        echo -e "${red}Your value : ${nc}$your_exit"
 		((fail++))
 	fi
 }
@@ -113,13 +113,13 @@ elif [[ $1 == "echo" ]]; then
 elif [[ $1 == "env" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS ENV		#####\n${nc}"
 	read_test_file "${dir_tests}env_tests"
-elif [[ $1 == "export" ]]; then
+# elif [[ $1 == "export" ]]; then
 # 	printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
 # 	read_test_file "${dir_tests}export_tests"
-# elif [[ $1 == "unset" ]]; then
-# 	printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
-# 	read_test_file "${dir_tests}unset_tests"
-# elif [[ $1 == "binary" ]]; then
+elif [[ $1 == "unset" ]]; then
+	printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
+	read_test_file "${dir_tests}unset_tests"
+elif [[ $1 == "binary" ]]; then
 	printf "${blue}${bold}\n\n#####		TESTS BINARY		#####\n${nc}"
 	read_test_file "${dir_tests}binary_tests"
 elif [[ $1 == "pwd" ]]; then
@@ -149,8 +149,8 @@ else
 	read_test_file "${dir_tests}env_tests"
 	# printf "${blue}${bold}\n\n#####		TESTS EXPORT		#####\n${nc}"
 	# read_test_file "${dir_tests}export_tests"
-	# printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
-	# read_test_file "${dir_tests}unset_tests"
+	printf "${blue}${bold}\n\n#####		TESTS UNSET		#####\n${nc}"
+	read_test_file "${dir_tests}unset_tests"
 	printf "${blue}${bold}\n\n#####		TESTS BINARY		#####\n${nc}"
 	read_test_file "${dir_tests}binary_tests"
 	printf "${blue}${bold}\n\n#####		TESTS PWD		#####\n${nc}"
