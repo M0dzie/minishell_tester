@@ -76,10 +76,11 @@ check_result()
 ## Check the exit value with $? ##
 check_exit_value()
 {
-	bash_exit="$1"
-	your_exit="$2"
-	echo "$1 et $2"
-	if [[ "$bsah_exit" = "$your_exit" ]]; then
+	bash_cmd="$(echo "$test" | bash)"
+	bash_exit=$?
+	your_cmd="$(echo "$test" | ./minishell)"
+	your_exit=$?
+	if [[ "$bash_exit" = "$your_exit" ]]; then
 		echo -e "${green}${bold}Exit value OK ✓${nc}"
 		((success++))
 	else
@@ -98,6 +99,7 @@ read_test_file()
 		echo 
 		echo -e "${pink}${bold}test $i:${nc}"; ((i++))
 		check_result "$(echo "$test" | bash)" "$(exec_cmd "$test")"
+		check_exit_value
 	done < "$1"
 }
 
