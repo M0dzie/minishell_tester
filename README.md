@@ -33,6 +33,10 @@ For example :
 bash tester.sh pwd
 ```
 
+## Disclaimer
+
+`echo -n` tests are still in WIP
+
 ## Testing Process
 The testing process involves two steps: 
 
