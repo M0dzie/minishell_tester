@@ -40,11 +40,9 @@ echo $HOME
 echo my shit terminal is [$TERM]
 echo my shit terminal is [$TERM4
 echo my shit terminal is [$TERM4]
-echo $UID
 echo $HOME9
 echo $9HOME
 echo $HOME%
-echo $UID$HOME
 echo My path for home is $HOME
 echo $USER$var$USER$USERtest$USER
 echo -nnnn $hola
