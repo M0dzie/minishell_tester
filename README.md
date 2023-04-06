@@ -22,11 +22,8 @@ To launch specific tests, you can add one of these following arguments :
 - `unset`
 - `binary`
 - `pwd`
-- `cd`
 - `exit`
 - `pipes`
-- `redir`
-- `heredoc`
 
 For example :
 ```bash
@@ -35,7 +32,8 @@ bash tester.sh pwd
 
 ## Disclaimer
 
-`echo -n` tests are still in WIP
+`echo -n` tests are still in WIP  
+The tester will only run a series of basics and errors tests, you need to make your own tests for `heredoc`, `cd` and `redirections`
 
 ## Testing Process
 The testing process involves two steps: 
