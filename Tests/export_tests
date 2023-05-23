@@ -1,5 +1,5 @@
-export
-export $DONTEXIST
+export | grep -v "declare -x _="
+export $DONTEXIST | grep -v "declare -x _="
 export | grep "HOME"
 export ""
 export =

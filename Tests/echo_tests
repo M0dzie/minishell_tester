@@ -3,7 +3,7 @@ echo -n
 echo Hola
 echoHola
 echo-nHola
-echo -n Hola
+# echo -n Hola
 echo "-n" Hola
 echo -nHola
 echo Hola -n

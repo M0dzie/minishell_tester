@@ -1,8 +1,8 @@
-env
+env | grep -v "KRB5CCNAME=FILE" | grep -v "LOGNAME" | grep -v "XDG_GREETER_DATA_DIR" | grep -v "_=/usr/bin/env" | grep -v "SHLVL"
 env hola
 env hola que tal
-env env
-env env env env env
+env env | grep -v "KRB5CCNAME=FILE" | grep -v "LOGNAME" | grep -v "XDG_GREETER_DATA_DIR" | grep -v "_=/usr/bin/env" | grep -v "SHLVL"
+env env env env env | grep -v "KRB5CCNAME=FILE" | grep -v "LOGNAME" | grep -v "XDG_GREETER_DATA_DIR" | grep -v "_=/usr/bin/env" | grep -v "SHLVL"
 env ls
 env ./Makefile
 env sources/

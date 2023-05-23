@@ -1,12 +1,12 @@
 /bin/echo
 /bin/echo Hola Que Tal
-/bin/env
+/bin/env | grep -v "KRB5CCNAME=FILE" | grep -v "LOGNAME" | grep -v "XDG_GREETER_DATA_DIR" | grep -v "_=/usr/bin/env" | grep -v "SHLVL"
 /bin/pwd
 /bin/cd Desktop
 pwd
 /usr/bin/echo
 /usr/bin/echo Hola Que Tal
-/usr/bin/env
+/usr/bin/env | grep -v "KRB5CCNAME=FILE" | grep -v "LOGNAME" | grep -v "XDG_GREETER_DATA_DIR" | grep -v "_=/usr/bin/env" | grep -v "SHLVL"
 /usr/bin/pwd
 /usr/bin/cd Desktop
 pwd
