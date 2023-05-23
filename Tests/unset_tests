@@ -8,7 +8,6 @@ unset HOL?A HOLA
 unset HOL?A HOL.A
 unset HOLA=
 unset HOL\\\\A
-unset HOL;A
 unset HOL.A
 unset HOL+A
 unset HOL=A

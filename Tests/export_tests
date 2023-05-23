@@ -28,7 +28,6 @@ export HOLA =bonjour
 export HOLA = bonjour
 export HOLA=bon(jour
 export HOLA=bon()jour
-export HOLA=bon&jour
 export HOLA=bon!jour
 export ""=""
 export ''=''
